@@ -1,0 +1,12 @@
+{
+  "rules": {
+    "only-arrow-functions": [
+        true,
+        "allow-declarations",
+        "allow-named-functions"
+    ],
+    "no-magic-numbers": true,
+    "no-console": ["log", "debug", "warn", "error"],
+    "no-unused-variable": true
+  }
+}
