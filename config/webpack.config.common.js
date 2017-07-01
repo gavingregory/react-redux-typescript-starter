@@ -43,6 +43,11 @@ module.exports = {
       {
         test: /\.tsx?$/,
         use:  "awesome-typescript-loader"
+      },
+      {
+        test: /\.css$/,
+        loader: "style-loader!css-loader",
+        include: /flexboxgrid/
       }
     ]
   }
