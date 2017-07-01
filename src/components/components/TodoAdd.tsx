@@ -1,6 +1,7 @@
 import * as React from 'react';
 import FlatButton from 'material-ui/FlatButton';
 import TextField from 'material-ui/TextField';
+import Subheader from 'material-ui/Subheader';
 
 interface Props {
   onAdd: (name: string) => void;
@@ -31,6 +32,7 @@ export default class TodoAdd extends React.Component<Props, State> {
   render () {
     return (
       <form onSubmit={this.onSubmit}>
+        <Subheader>Add a todo</Subheader>
         <TextField
           hintText="Type a todo"
           fullWidth={true}
