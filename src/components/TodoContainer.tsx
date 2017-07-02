@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import { State as BaseState, Todo } from 'models';
 import { NumberMap } from 'models';
+import { FlexColWidth } from 'enums';
 import { addTodo } from 'modules/todo';
 
 import { Row, Col } from 'react-flexbox-grid';
@@ -24,10 +25,10 @@ class TodoContainer extends React.Component<Props, undefined> {
   render () {
     return (
       <Row>
-        <Col sm={6}>
+        <Col sm={FlexColWidth.SIX}>
           <TodoList todos={toArray(this.props.todos)} />
         </Col>
-        <Col sm={6}>
+        <Col sm={FlexColWidth.SIX}>
           <TodoAdd onAdd={this.props.addTodo} />
         </Col>
       </Row>
