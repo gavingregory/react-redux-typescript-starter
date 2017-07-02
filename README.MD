@@ -2,7 +2,7 @@
 
 ![logos](https://user-images.githubusercontent.com/8677029/27766759-56a25066-5ea9-11e7-81e1-76c3f3d20576.png)
 
-![image](https://user-images.githubusercontent.com/8677029/27766316-1f76a736-5e9a-11e7-92e4-6a242b053459.png)
+![screenshot](https://user-images.githubusercontent.com/8677029/27766777-2d0c686c-5eaa-11e7-9e71-488654532944.png)
 
 This is (a) a starter application and (b) a demonstration of my solution for creating a react/redux application with Typescript.
 
