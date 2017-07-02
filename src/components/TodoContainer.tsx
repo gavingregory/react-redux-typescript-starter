@@ -24,10 +24,10 @@ class TodoContainer extends React.Component<Props, undefined> {
   render () {
     return (
       <Row>
-        <Col md={6}>
+        <Col sm={6}>
           <TodoList todos={toArray(this.props.todos)} />
         </Col>
-        <Col md={6}>
+        <Col sm={6}>
           <TodoAdd onAdd={this.props.addTodo} />
         </Col>
       </Row>

@@ -16,7 +16,7 @@ interface Props { }
 
 const App: React.SFC<Props> = () => (
   <div>
-    <AppBar title="React App" iconClassNameRight="muidocs-icon-navigation-expand-more" />
+    <AppBar title="React App" showMenuIconButton={false} />
     <TodoContainer />
   </div>
 );
