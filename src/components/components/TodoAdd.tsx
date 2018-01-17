@@ -1,7 +1,5 @@
 import * as React from 'react';
-import FlatButton from 'material-ui/FlatButton';
-import TextField from 'material-ui/TextField';
-import Subheader from 'material-ui/Subheader';
+import { Button, Header, Input } from 'semantic-ui-react';
 
 interface Props {
   onAdd: (name: string) => void;
@@ -25,6 +23,7 @@ export default class TodoAdd extends React.Component<Props, State> {
   }
 
   onSubmit (event) {
+    event.preventDefault();
     this.setState({ name: '' });
     this.props.onAdd(this.state.name);
   }
@@ -32,14 +31,13 @@ export default class TodoAdd extends React.Component<Props, State> {
   render () {
     return (
       <form onSubmit={this.onSubmit}>
-        <Subheader>Add a todo</Subheader>
-        <TextField
-          hintText="Type a todo"
-          fullWidth={true}
+        <Header>Add a todo</Header>
+        <Input
+          placeholder='Type a todo'
           value={this.state.name}
           onChange={this.onChangeName}
         />
-        <FlatButton label="Add" primary={true} type="submit" />
+        <Button primary type='submit'>Add</Button>
       </form>
     );
   }

@@ -42,12 +42,30 @@ module.exports = {
     rules: [
       {
         test: /\.tsx?$/,
-        use:  "awesome-typescript-loader"
+        use: 'awesome-typescript-loader'
       },
       {
-        test: /\.css$/,
-        loader: "style-loader!css-loader",
-        include: /flexboxgrid/
+        test: /\.(eot|svg|ttf|woff|woff2|png|jpg)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {}
+          }
+        ],
+      },
+      {
+        test: /\.s?css$/,
+        use: [
+          {
+            loader: 'style-loader'
+          },
+          {
+            loader: 'css-loader'
+          },
+          {
+            loader: 'sass-loader'
+          }
+        ]
       }
     ]
   }

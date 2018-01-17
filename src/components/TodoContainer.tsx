@@ -1,18 +1,15 @@
 import * as React from 'react';
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
-
 import { State as BaseState, Todo } from 'models';
 import { NumberMap } from 'models';
 import { FlexColWidth } from 'enums';
 import { addTodo } from 'modules/todo';
-
-import { Row, Col } from 'react-flexbox-grid';
-
+import { Container, Grid } from 'semantic-ui-react';
 import TodoAdd from './components/TodoAdd';
 import TodoList from './components/TodoList';
 
-interface Props {
+interface OwnProps {
   todos: NumberMap<Todo>;
   addTodo: () => void
 }
@@ -21,25 +18,28 @@ const toArray = (todos: NumberMap<Todo>): Todo[] => {
   return Object.keys(todos).map((key) => todos[key]);
 }
 
-class TodoContainer extends React.Component<Props, undefined> {
+class TodoContainer extends React.Component<OwnProps> {
   render () {
+    const { todos, addTodo } = this.props;
     return (
-      <Row>
-        <Col sm={FlexColWidth.SIX}>
-          <TodoList todos={toArray(this.props.todos)} />
-        </Col>
-        <Col sm={FlexColWidth.SIX}>
-          <TodoAdd onAdd={this.props.addTodo} />
-        </Col>
-      </Row>
+    <Container>
+      <Grid columns='equal'>
+        <Grid.Column>
+            <TodoList todos={toArray(todos)} />
+        </Grid.Column>
+        <Grid.Column>
+            <TodoAdd onAdd={addTodo} />
+        </Grid.Column>
+      </Grid>
+    </Container>
     );
   }
 }
 
-const mapStateToProps = (state: BaseState, ownProps: Props) => ({ todos: state.todos });
+const mapStateToOwnProps = (state: BaseState, ownOwnProps: OwnProps) => ({ todos: state.todos });
 
-const mapDispatchToProps = (dispatch: Dispatch<BaseState>) => ({
+const mapDispatchToOwnProps = (dispatch: Dispatch<BaseState>) => ({
   addTodo: (name: string) => { dispatch(addTodo(name)); } 
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(TodoContainer);
+export default connect(mapStateToOwnProps, mapDispatchToOwnProps)(TodoContainer);

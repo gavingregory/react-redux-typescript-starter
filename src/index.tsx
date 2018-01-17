@@ -1,31 +1,27 @@
 import * as React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-
 import store from 'redux/store';
 import TodoContainer from 'components/TodoContainer';
+import Menu from 'components/MenuContainer/MenuContainer';
+import 'semantic-ui-css/semantic.min.css';
 
-import AppBar from 'material-ui/AppBar';
+import { Container } from 'semantic-ui-react';
 
-import injectTapEventPlugin = require("react-tap-event-plugin");
-injectTapEventPlugin();
+interface OwnProps {}
 
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-
-interface Props { }
-
-const App: React.SFC<Props> = () => (
-  <div>
-    <AppBar title="React App" showMenuIconButton={false} />
-    <TodoContainer />
-  </div>
+const App: React.SFC<OwnProps> = () => (
+  <Container>
+    <Menu />
+    <Container style={{ marginTop: '7em' }}>
+      <TodoContainer />
+    </Container>
+  </Container>
 );
 
 render(
   <Provider store={store}>
-    <MuiThemeProvider>
-      <App />
-    </MuiThemeProvider>
+    <App />
   </Provider>,
   document.getElementById('react')
 );
