@@ -9,7 +9,7 @@ import { Container, Grid, Menu, Divider, Segment, List, Header } from 'semantic-
 
 interface OwnProps {}
 
-class MenuContainer extends React.Component<OwnProps> {
+export class MenuContainer extends React.Component<OwnProps> {
   render () {
     return (
       <Menu fixed='top' inverted>
@@ -23,5 +23,3 @@ class MenuContainer extends React.Component<OwnProps> {
     );
   }
 }
-
-export default MenuContainer;

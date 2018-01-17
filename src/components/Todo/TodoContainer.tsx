@@ -9,16 +9,28 @@ import { Container, Grid } from 'semantic-ui-react';
 import TodoAdd from './components/TodoAdd';
 import TodoList from './components/TodoList';
 
-interface OwnProps {
+interface OwnProps {}
+
+interface PropsFromState {
   todos: NumberMap<Todo>;
-  addTodo: () => void
+}
+
+interface PropsFromDispatch {
+  addTodo: (string) => void
 }
 
 const toArray = (todos: NumberMap<Todo>): Todo[] => {
   return Object.keys(todos).map((key) => todos[key]);
 }
 
-class TodoContainer extends React.Component<OwnProps> {
+const mapStateToProps = (state: BaseState, ownOwnProps: OwnProps): PropsFromState =>
+  ({ todos: state.todos });
+
+const mapDispatchToProps = (dispatch: Dispatch<BaseState>): PropsFromDispatch =>
+  ({ addTodo: (name: string) => { dispatch(addTodo(name)); } });
+
+@connect(mapStateToProps, mapDispatchToProps)
+export class TodoContainer extends React.Component<OwnProps & Partial<PropsFromState> & Partial<PropsFromDispatch>> {
   render () {
     const { todos, addTodo } = this.props;
     return (
@@ -35,11 +47,3 @@ class TodoContainer extends React.Component<OwnProps> {
     );
   }
 }
-
-const mapStateToOwnProps = (state: BaseState, ownOwnProps: OwnProps) => ({ todos: state.todos });
-
-const mapDispatchToOwnProps = (dispatch: Dispatch<BaseState>) => ({
-  addTodo: (name: string) => { dispatch(addTodo(name)); } 
-});
-
-export default connect(mapStateToOwnProps, mapDispatchToOwnProps)(TodoContainer);
