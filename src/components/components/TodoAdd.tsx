@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Button, Header, Input } from 'semantic-ui-react';
 
-interface Props {
+interface OwnProps {
   onAdd: (name: string) => void;
 }
 
@@ -9,9 +9,9 @@ interface State {
   name: string;
 }
 
-export default class TodoAdd extends React.Component<Props, State> {
+export default class TodoAdd extends React.Component<OwnProps, State> {
 
-  constructor (props: Props) {
+  constructor (props: OwnProps) {
     super(props);
     this.onChangeName = this.onChangeName.bind(this);
     this.onSubmit = this.onSubmit.bind(this);

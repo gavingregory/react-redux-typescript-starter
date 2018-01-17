@@ -2,16 +2,16 @@ import * as React from 'react';
 import { Todo } from 'models';
 import { List } from 'semantic-ui-react'
 
-interface Props {
+interface OwnProps {
   todos: Todo[]
 }
 
-const TodoList: React.SFC<Props> = (props: Props) => (
+const TodoList: React.SFC<OwnProps> = (props: OwnProps) => (
   <List divided relaxed>
     {
       props.todos.map((todo) => (
         <List.Item key={todo.id}>
-          <List.Icon name='circle' size='large' verticalAlign='middle' />
+          <List.Icon name='write square' size='large' verticalAlign='middle' />
           <List.Content>
             <List.Header>
               {todo.name}
